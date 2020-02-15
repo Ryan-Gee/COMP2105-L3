@@ -17,15 +17,22 @@ body > div {
 /* ----------- Example One ----------- */
 
 div:first-of-type {
+    /* Set a slight dark grey gradient */
     background-image: linear-gradient(0deg, #2a2a2a, #393939);
+    /* Scale the background up so there's room to move */
     background-size: 200% 200%;
+    /* Animate the background like the button */
     animation: 2s ease infinite alternate animateBackgroundGradient;
 }
 
 div:first-of-type button {
+    /* Clear background color */
     background-color: transparent;
+    /* Add the background gradient */
     background-image: linear-gradient(-90deg, palevioletred, purple);
+    /* Make the background twice the size of the button so there's room to move */
     background-size: 200%, 200%;
+    /* Default position */
     background-position: 200% 200%;
     border: 5px solid white;
     padding: 10px 20px;
@@ -34,9 +41,11 @@ div:first-of-type button {
     letter-spacing: 0.2rem;
     color: white;
     cursor: pointer;
+    /* Animate the gradient */
     animation: 3s ease-in infinite alternate animateBackgroundGradient;
 }
 
+/* Simply slides the gradient from one corner to the other */
 @keyframes animateBackgroundGradient {
     from {
         background-position: 100% 100%;
@@ -53,6 +62,8 @@ body > div:nth-of-type(2) {
     position: relative;
     height: 150px
 }
+
+/* Background text */
 p {
     color: #2e2e2e;
     font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
@@ -67,6 +78,7 @@ p {
     width: 8px
 }
 
+/* The light grey dashed line, just a large bordered box */
 div.divider {
     width: 0px;
     border: 5px dashed #444;
@@ -78,27 +90,32 @@ div.divider {
     width: 100%
 }
 
+/* Make the ball round and assign the animation, using linear interpolation to create consistent movement */
 .ball {
     height: 8px;
     border-radius: 50%;
     animation: 5s linear infinite pongBall;
 }
 
+
 .p1, .p2 {
     height: 70px;
     top: 0px;
 }
 
+/* Put the p1 paddle on the left and assign it's animation */
 .p1 {
     left: calc(50% - 253px);
     animation: 5s linear infinite p1;
 }
 
+/* Same as above, but on the right */
 .p2 {
     left: calc(50% + 253px);
     animation: 5s linear infinite p2;
 }
 
+/* 4 keyframe setup for the ball bouncing back and forth */
 @keyframes pongBall {
     0% {
         left: calc(50% - 250px);
@@ -120,6 +137,7 @@ div.divider {
     }
 }
 
+/* Animation for p1 paddle, just sliding it up and down */
 @keyframes p1 {
     0% {
         top: 140px;
@@ -141,6 +159,7 @@ div.divider {
     }
 }
 
+/* Animation for the p2 paddle, a little more sporadic than p1 */
 @keyframes p2 {
     0% {
         top: 40px;
@@ -167,15 +186,20 @@ div.divider {
 
 /* ----------- Example Three ----------- */
 
+/* Set the primary background */
 body > div:nth-of-type(3) {
     background-color: rgb(109, 197, 193);
+    /* Transparent background image can be assigned overtop of background colour */
     background-image: url("clouds.png");
+    /* Make sure the background size is set correctly */
     background-size: 1024px 512px;
     background-position: 0px 0px;
+    /* Assign the scrolling sky animation */
     animation: 3s linear infinite scrollSky;
     position: relative;
 }
 
+/* A second div, exactly overlaid on it's parent div, and with the same background scrolling, just a different source image */
 div.parallaxClouds {
     position: absolute;
     width: 100%;
@@ -189,18 +213,22 @@ div.parallaxClouds {
     animation: 6s linear infinite scrollSky;
 }
 
+/* Assign both animations to the plane itself, one anticipated a bit */
+/* Two animations are used, one anticipated (started early), so that the easing properties can create even sinusoidal movement */
 .plane {
-    animation: 8s ease-in-out 2s infinite slidePlane, 8s ease-in-out infinite rotatePlane;
+    animation: 8s ease-in-out infinite slidePlane, 8s ease-in-out -2s infinite rotatePlane;
     position: relative;
     width: 150px;
     left: calc(50% - 75px)
 }
 
+/* Scale the plane sprite down a bit */
 .plane img {
     width: 150px;
     left: 150px;
 }
 
+/* Basic settings for the flashing lights on the plane wings */
 div.planelight {
     position: absolute;
     border-radius: 50%;
@@ -211,6 +239,7 @@ div.planelight {
     animation: 0.5s ease infinite alternate blinkLight;
 }
 
+/* Assign correct position and colour to each individual light */
 .planelight.red {
     background-color: #ff0000;
     left: calc(50% - 53px);
@@ -221,6 +250,7 @@ div.planelight {
     left: calc(50% + 50px)
 }
 
+/* Simply scrolls the sky from top to bottom, because the images are set to 512px it tiles seamlessly */
 @keyframes scrollSky {
     from {
         background-position: 0px 0px;
@@ -230,6 +260,7 @@ div.planelight {
     }
 }
 
+/* Slides the plane back and forth smoothly across the screen */
 @keyframes slidePlane {
     0% {
         left: calc(50% - 75px + 150px);
@@ -242,6 +273,7 @@ div.planelight {
     }
 }
 
+/* Rotates the plane slowly back and forth, to be used with the slidePlane animation */
 @keyframes rotatePlane {
     0% {
         transform: rotate(25deg)
@@ -254,6 +286,7 @@ div.planelight {
     }
 }
 
+/* Very simple opacity animation for the blinking wingtip lights */
 @keyframes blinkLight {
     from {
         opacity: 0;
