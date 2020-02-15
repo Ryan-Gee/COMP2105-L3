@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #2a2a2a;
+}
+
+body > div {
+    background-color: #2a2a2a;
+    padding: 50px;
+    background-size: cover;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* ----------- Example One ----------- */
+
+div:first-of-type {
+    background-image: linear-gradient(0deg, #2a2a2a, #393939);
+    background-size: 200% 200%;
+    animation: 2s ease infinite alternate animateBackgroundGradient;
+}
+
+div:first-of-type button {
+    background-color: transparent;
+    background-image: linear-gradient(-90deg, palevioletred, purple);
+    background-size: 200%, 200%;
+    background-position: 200% 200%;
+    border: 5px solid white;
+    padding: 10px 20px;
+    font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    letter-spacing: 0.2rem;
+    color: white;
+    cursor: pointer;
+    animation: 3s ease-in infinite alternate animateBackgroundGradient;
+}
+
+@keyframes animateBackgroundGradient {
+    from {
+        background-position: 100% 100%;
+    }
+    to {
+        background-position: 0% 0%;
+    }
+}
+
+/* ----------- Example Two ----------- */
+
+body > div:nth-of-type(2) {
+    /* Establish positioning context */
+    position: relative;
+    height: 150px
+}
+p {
+    color: #2e2e2e;
+    font-family: 'Bebas Neue', Arial, Helvetica, sans-serif;
+    font-size: 100px;
+    margin: 0;
+}
+
+.p1, .p2, .ball, .divider {
+    position: absolute;
+    background-color: white;
+    background-image: none;
+    width: 8px
+}
+
+div.divider {
+    width: 0px;
+    border: 5px dashed #444;
+    background-color: transparent;
+    background-image: none;
+    left: 50%;
+    height: 200%;
+    top: -10px;
+    width: 100%
+}
+
+.ball {
+    height: 8px;
+    border-radius: 50%;
+    animation: 5s linear infinite pongBall;
+}
+
+.p1, .p2 {
+    height: 70px;
+    top: 0px;
+}
+
+.p1 {
+    left: calc(50% - 253px);
+    animation: 5s linear infinite p1;
+}
+
+.p2 {
+    left: calc(50% + 253px);
+    animation: 5s linear infinite p2;
+}
+
+@keyframes pongBall {
+    0% {
+        left: calc(50% - 250px);
+        top: 170px
+    }
+    28% {
+        top: 0px
+    }
+    50% {
+        left: calc(50% + 250px);
+        top: 150px;
+    }
+    80% {
+        top: 247px;
+    }
+    100% {
+        left: calc(50% - 250px);
+        top: 170px;
+    }
+}
+
+@keyframes p1 {
+    0% {
+        top: 140px;
+    }
+    30% {
+        top: 20px;
+    }
+    40% {
+        top: 60px;
+    }
+    60% {
+        top: 160px;
+    }
+    85% {
+        top: 100px;
+    }
+    100% {
+        top: 140px;
+    }
+}
+
+@keyframes p2 {
+    0% {
+        top: 40px;
+    }
+    10% {
+        top: 90px;
+    }
+    20% {
+        top: 40px;
+    }
+    40% {
+        top: 130px;
+    }
+    50% {
+        top: 110px;
+    }
+    70% {
+        top: 150px;
+    }
+    100% {
+        top: 40px;
+    }
+}
+
+/* ----------- Example Three ----------- */
+
+body > div:nth-of-type(3) {
+    background-color: rgb(109, 197, 193);
+    background-image: url("clouds.png");
+    background-size: 1024px 512px;
+    background-position: 0px 0px;
+    animation: 3s linear infinite scrollSky;
+    position: relative;
+}
+
+div.parallaxClouds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    background-image: url("clouds2.png");
+    background-size: 1024px 512px;
+    background-position: 0px 0px;
+    animation: 6s linear infinite scrollSky;
+}
+
+.plane {
+    animation: 8s ease-in-out 2s infinite slidePlane, 8s ease-in-out infinite rotatePlane;
+    position: relative;
+    width: 150px;
+    left: calc(50% - 75px)
+}
+
+.plane img {
+    width: 150px;
+    left: 150px;
+}
+
+div.planelight {
+    position: absolute;
+    border-radius: 50%;
+    background-image: none;
+    width: 3px;
+    height: 6px;
+    top: 50%;
+    animation: 0.5s ease infinite alternate blinkLight;
+}
+
+.planelight.red {
+    background-color: #ff0000;
+    left: calc(50% - 53px);
+}
+
+.planelight.green {
+    background-color: #00da00;
+    left: calc(50% + 50px)
+}
+
+@keyframes scrollSky {
+    from {
+        background-position: 0px 0px;
+    }
+    to {
+        background-position: 0px 512px;
+    }
+}
+
+@keyframes slidePlane {
+    0% {
+        left: calc(50% - 75px + 150px);
+    }
+    50% {
+        left: calc(50% - 75px - 150px);
+    }
+    100% {
+        left: calc(50% - 75px + 150px);
+    }
+}
+
+@keyframes rotatePlane {
+    0% {
+        transform: rotate(25deg)
+    }
+    50% {
+        transform: rotate(-25deg)
+    }
+    100% {
+        transform: rotate(25deg)
+    }
+}
+
+@keyframes blinkLight {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
